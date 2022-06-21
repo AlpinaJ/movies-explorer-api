@@ -20,7 +20,7 @@ const movieRoutes = require("./routes/movieRouter");
 
 const { PORT = 3000 } = process.env;
 // mongoose.connect("mongodb://localhost:27017/bitfilmsdb");
-mongoose.connect("mongodb://localhost:27017/bitfilmsdb").then(()=>{
+mongoose.connect("mongodb://localhost:27017/bitfilmsdb/?authSource=admin").then(()=>{
   console.log(`successfully connected`);
 }).catch((e)=>{
   console.log(`not connected`, e);
