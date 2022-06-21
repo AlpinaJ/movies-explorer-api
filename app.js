@@ -19,7 +19,15 @@ const userRoutes = require("./routes/userRouter");
 const movieRoutes = require("./routes/movieRouter");
 
 const { PORT = 3000 } = process.env;
-mongoose.connect("mongodb://localhost:27017/bitfilmsdb");
+// mongoose.connect("mongodb://localhost:27017/bitfilmsdb");
+mongoose.connect("monogodb://localhost:27017/bitfilmsdb",{useNewUrlParser:true,
+useUnifiedTopology:true,
+  useCreateIndex:true}).then(()=>{
+  console.log(`successfully connected`);
+}).catch((e)=>{
+  console.log(`not connected`, e);
+})
+
 const app = express();
 
 require("dotenv").config();
