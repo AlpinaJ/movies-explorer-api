@@ -20,9 +20,7 @@ const movieRoutes = require("./routes/movieRouter");
 
 const { PORT = 3000 } = process.env;
 // mongoose.connect("mongodb://localhost:27017/bitfilmsdb");
-mongoose.connect("monogodb://localhost:27017/bitfilmsdb",{useNewUrlParser:true,
-useUnifiedTopology:true,
-  useCreateIndex:true}).then(()=>{
+mongoose.connect("mongodb://localhost:27017/bitfilmsdb").then(()=>{
   console.log(`successfully connected`);
 }).catch((e)=>{
   console.log(`not connected`, e);
