@@ -68,4 +68,5 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
+console.log("listen on port", PORT);
 app.listen(PORT);
