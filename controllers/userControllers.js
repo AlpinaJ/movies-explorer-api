@@ -104,7 +104,6 @@ module.exports.signup = (req, res, next) => {
       });
     })
       .catch((err) => {
-        console.log(err);
         if (err.code === 11000) {
           next(new ConflictError("Пользователь с таким EMAIL уже зарегистрирован"));
         } else if (err.name === "ValidationError") {

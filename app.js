@@ -19,12 +19,7 @@ const userRoutes = require("./routes/userRouter");
 const movieRoutes = require("./routes/movieRouter");
 
 const { PORT = 3000 } = process.env;
-// mongoose.connect("mongodb://localhost:27017/bitfilmsdb");
-mongoose.connect("mongodb://127.0.0.1:27017/bitfilmsdb").then(()=>{
-  console.log(`successfully connected`);
-}).catch((e)=>{
-  console.log(`not connected`, e);
-})
+mongoose.connect("mongodb://127.0.0.1:27017/filmsdb");
 
 const app = express();
 
@@ -32,7 +27,7 @@ require("dotenv").config();
 
 app.use(express.json());
 const corsOptions = {
-  origin: ["https://AlpinaJ-diplom.nomoredomains.xyz", "http://AlpinaJ-diplom.nomoredomains.xyz", "http://localhost:3000"],
+  origin: ["https://alpinaj-diplom.nomoredomains.xyz", "http://alpinaj-diplom.nomoredomains.xyz", "http://localhost:3000"],
   credentials: true,
 };
 
@@ -68,5 +63,4 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-console.log("listen on port", PORT);
 app.listen(PORT);
