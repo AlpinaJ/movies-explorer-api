@@ -2,7 +2,7 @@ const JWT_KEY = "jwt";
 const JWT_OPTIONS = {
   maxAge: 604800000,
   httpOnly: true,
-  // secure: true,
+  secure: true,
   sameSite: "none",
 };
 

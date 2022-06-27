@@ -13,7 +13,7 @@ const { requestLogger, errorLogger } = require("./middlewares/logger");
 const routes = require("./routes/index");
 
 const { PORT = 3000 } = process.env;
-mongoose.connect(process.env.NODE_ENV === "production" ? process.env.DATA_BASE : "mongodb://127.0.0.1:27017/filmsdb");
+mongoose.connect(process.env.NODE_ENV === "production" ? process.env.DATA_BASE : "mongodb://127.0.0.1:27017/moviesdb");
 
 const app = express();
 
