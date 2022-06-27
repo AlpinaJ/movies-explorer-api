@@ -54,28 +54,15 @@ module.exports.getMovies = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => {
-  Movie.findById(req.query._id)
+  Movie.findById(req.params.id)
     .orFail(() => {
       next(new NotFoundError("Фильм с указанным _id не найдена"));
     })
     .then((movie) => {
-      if (movie.owner.toString() !== req.user._id) {
-        next(new ForbiddenError("Вы не можете удалить чужой фильм"));
+      if (movie.owner.toString() === req.user._id) {
+        return Movie.findByIdAndDelete(req.params.id).then(() => res.send(movie));
       }
-      return Movie.findByIdAndDelete(req.query._id).then(() => res.send({
-        country: movie.country,
-        director: movie.director,
-        duration: movie.duration,
-        year: movie.year,
-        description: movie.description,
-        image: movie.image,
-        trailerLink: movie.trailerLink,
-        thumbnail: movie.thumbnail,
-        movieId: movie.movieId,
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
-        owner: req.user._id,
-      }));
+      return next(new ForbiddenError("Вы не можете удалить чужой фильм"));
     })
     .catch((err) => {
       if (err.name === "CastError") {
