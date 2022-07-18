@@ -4,20 +4,26 @@ const { login } = require("../controllers/signIn");
 const { signup } = require("../controllers/signUp");
 const { logout } = require("../controllers/signOut");
 
-appRoutes.post("/signin", celebrate({
+console.log("we are routers");
+
+appRoutes.post("/signin",
+  celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
-}), login);
+}),
+  login);
 
-appRoutes.post("/signup", celebrate({
+appRoutes.post("/signup",
+  celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
     name: Joi.string().min(2).max(30),
   }),
-}), signup);
+}),
+  signup);
 
 appRoutes.post("/signout", logout);
 

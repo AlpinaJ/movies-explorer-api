@@ -21,7 +21,8 @@ require("dotenv").config();
 
 app.use(express.json());
 const corsOptions = {
-  origin: ["https://alpinaj-diplom.nomoredomains.xyz", "http://alpinaj-diplom.nomoredomains.xyz", "http://localhost:3000"],
+  origin: ["https://alpinaj-diplom.nomoredomains.xyz", "http://alpinaj-diplom.nomoredomains.xyz",
+    "http://localhost:3000", "http://localhost:3001", "https://localhost:3001"],
   credentials: true,
 };
 

@@ -7,6 +7,7 @@ const JWT_OPTIONS = {
 };
 
 module.exports.logout = (req, res) => {
+  console.log("try to clear");
   res.clearCookie(JWT_KEY, JWT_OPTIONS);
   res.end();
 };

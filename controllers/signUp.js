@@ -10,6 +10,7 @@ module.exports.signup = (req, res, next) => {
     name, email, password,
   } = req.body;
 
+  console.log(name);
   if (!validator.isEmail(email)) {
     next(new BadRequestError("Переданы некорректные данные"));
   }

@@ -24,8 +24,12 @@ module.exports.updateUser = (req, res, next) => {
     { email, name },
     { new: true, runValidators: true },
   )
-    .then((user) => res.status(200).send({ email: user.email, name: user.name }))
+    .then((user) =>
+    {
+      res.status(200).send({ email: user.email, name: user.name })}
+      )
     .catch((err) => {
+      console.log(err);
       if (err.name === "ValidationError") {
         next(new BadRequestError("Переданы некорректные данные при обновлении профиля"));
       } else if (err.name === "CastError") {
