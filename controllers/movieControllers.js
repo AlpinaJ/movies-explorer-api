@@ -10,7 +10,7 @@ module.exports.createMovie = (req, res, next) => {
     country, director, duration, year, description,
     image, trailerLink, thumbnail, movieId, nameRU, nameEN,
   } = req.body;
-
+  console.log(req.body);
 
   Movie.create({
     country,
