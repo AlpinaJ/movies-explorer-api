@@ -4,6 +4,7 @@ const { NotFoundError } = require("../errors/NotFoundError");
 const { BadRequestError } = require("../errors/BadRequestError");
 
 module.exports.getUser = (req, res, next) => {
+  console.log("getUser in back", req);
   User.findById(req.user._id)
     .then((user) => {
       if (user) {

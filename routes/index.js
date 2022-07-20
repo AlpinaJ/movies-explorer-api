@@ -7,7 +7,7 @@ const { NotFoundError } = require("../errors/NotFoundError");
 
 router.use("/", appRoutes);
 
-// router.use(auth);
+router.use(auth);
 router.use("/users", userRoutes);
 router.use("/movies", movieRoutes);
 
