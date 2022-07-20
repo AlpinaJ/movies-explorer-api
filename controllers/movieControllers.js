@@ -26,21 +26,7 @@ module.exports.createMovie = (req, res, next) => {
     owner: req.user._id,
   }).then((card) => {
     console.log("create movie success", card);
-    const movie = {
-      country: card.country,
-      director: card.director,
-      duration: card.duration,
-      year: card.year,
-      description: card.description,
-      image: card.image,
-      trailerLink: card.trailerLink,
-      thumbnail: card.thumbnail,
-      movieId: card.movieId,
-      nameRU: card.nameRU,
-      nameEN: card.nameEN,
-      owner: req.user._id,
-    }
-    res.send({movie})
+    res.send(card)
     }
   )
     .catch((err) => {
