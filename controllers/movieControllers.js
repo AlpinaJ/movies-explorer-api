@@ -9,6 +9,7 @@ module.exports.createMovie = (req, res, next) => {
     country, director, duration, year, description,
     image, trailerLink, thumbnail, movieId, nameRU, nameEN,
   } = req.body;
+  console.log(req.method);
 
   Movie.create({
     country,
@@ -25,7 +26,7 @@ module.exports.createMovie = (req, res, next) => {
     owner: req.user._id,
   }).then((card) => {
     console.log("create movie success", card);
-    res.status(200).send({
+    const movie = {
       country: card.country,
       director: card.director,
       duration: card.duration,
@@ -38,8 +39,11 @@ module.exports.createMovie = (req, res, next) => {
       nameRU: card.nameRU,
       nameEN: card.nameEN,
       owner: req.user._id,
-    });
-  }).catch((err) => {
+    }
+    res.send({movie})
+    }
+  )
+    .catch((err) => {
     if (err.name === "ValidationError") {
       next(new BadRequestError("Передвны некорректные данные"));
     } else {
