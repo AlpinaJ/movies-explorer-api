@@ -26,6 +26,7 @@ module.exports.createMovie = (req, res, next) => {
     nameEN,
     owner: req.user._id,
   }).then((card) => {
+    console.log("create movie success");
     res.send({
       country: card.country,
       director: card.director,
