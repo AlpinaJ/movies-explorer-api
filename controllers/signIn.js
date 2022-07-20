@@ -27,11 +27,9 @@ module.exports.login = (req, res, next) => {
               { expiresIn: "7d" },
             );
 
-            console.log("token", token);
             res.cookie(JWT_KEY, token, JWT_OPTIONS);
             res.status(200).send({ message: "success" });
             console.log("cookie: ", res.cookie);
-            console.log("cookies: ", res.cookies);
           } else {
             next(new UnauthorizedError("Неправильные почта или пароль"));
           }

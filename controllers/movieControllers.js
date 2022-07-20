@@ -5,10 +5,12 @@ const { NotFoundError } = require("../errors/NotFoundError");
 const { ForbiddenError } = require("../errors/ForbiddenError");
 
 module.exports.createMovie = (req, res, next) => {
+  console.log("request", req, req.body, req.user);
   const {
     country, director, duration, year, description,
     image, trailerLink, thumbnail, movieId, nameRU, nameEN,
   } = req.body;
+
 
   Movie.create({
     country,
