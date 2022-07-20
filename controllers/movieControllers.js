@@ -9,7 +9,6 @@ module.exports.createMovie = (req, res, next) => {
     country, director, duration, year, description,
     image, trailerLink, thumbnail, movieId, nameRU, nameEN,
   } = req.body;
-  console.log(req.method);
 
   Movie.create({
     country,
@@ -25,7 +24,6 @@ module.exports.createMovie = (req, res, next) => {
     nameEN,
     owner: req.user._id,
   }).then((card) => {
-    console.log("create movie success", card);
     res.send(card)
     }
   )
