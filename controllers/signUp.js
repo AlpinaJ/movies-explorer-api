@@ -6,7 +6,6 @@ const { BadRequestError } = require("../errors/BadRequestError");
 const { ConflictError } = require("../errors/ConflictError");
 
 module.exports.signup = (req, res, next) => {
-  console.log("signup", req);
   const {
     name, email, password,
   } = req.body;
