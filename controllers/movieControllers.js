@@ -48,10 +48,10 @@ module.exports.deleteMovie = (req, res, next) => {
       next(new NotFoundError("Фильм с указанным _id не найдена"));
     })
     .then((movie) => {
-      //if (movie.owner.toString() === req.user._id) {
+      if (movie.owner.toString() === req.user._id) {
         return Movie.findByIdAndDelete(req.params.id).then(() => res.send(movie));
-      //}
-     // return next(new ForbiddenError("Вы не можете удалить чужой фильм"));
+      }
+     return next(new ForbiddenError("Вы не можете удалить чужой фильм"));
     })
     .catch((err) => {
       if (err.name === "CastError") {
