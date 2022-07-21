@@ -13,6 +13,7 @@ const JWT_OPTIONS = {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
+  console.log(email, password);
   return User.findOne({ email }).select("+password")
     .then((user) => {
       if (!user) {
