@@ -38,6 +38,7 @@ module.exports.createMovie = (req, res, next) => {
 
 module.exports.getMovies = (req, res, next) => {
   Movie.find({}).then((movies) => {
+    console.log("movies in back");
     res.send({ data: movies });
   }).catch((err) => next(err));
 };
